@@ -3,7 +3,7 @@ FROM ubuntu:16.04
 MAINTAINER kukaro <justkukaro@naver.com>
 RUN apt-get -y update && apt-get -y upgrade
 
-#Set Argument
+# Set Argument
 ENV DEST /var/www/html
 
 # Install python
