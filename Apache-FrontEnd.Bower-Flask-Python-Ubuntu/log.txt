@@ -1,0 +1,1 @@
+docker run -d -p 80:80 --add-host="flaskapp.com:127.0.0.1" app
