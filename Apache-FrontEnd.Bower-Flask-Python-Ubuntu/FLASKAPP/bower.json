@@ -1,0 +1,22 @@
+{
+  "name": "FLASKAPP",
+  "homepage": "https://github.com/kukaro/KamangBlogData",
+  "authors": [
+    "kukaro <justkukaro@naver.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "vue": "^2.5.16",
+    "vue-router": "^3.0.1"
+  }
+}
