@@ -4,5 +4,5 @@
 	RewriteCond %{REQUEST_URI} !^/*$
 	#RewriteCond %{REQUEST_FILENAME} !-f
 	#RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule ^(.*)$ http://localhost/ [L]
+	RewriteRule ^(.*)$ http://localhost/#%{REQUEST_URI} [L,NE]
 </IfModule>

@@ -41,7 +41,6 @@ ADD apache2.conf ${AP_DIR}
 ADD .htaccess ${DEST}
 ADD .htaccess ${DEST}/../
 RUN mkdir -p ${DEST}/FLASKAPPS/logs
-RUN cp ${DEST}/html/index.html ${DEST}/
 
 # CMD
 CMD /usr/sbin/apache2ctl -D FOREGROUND
