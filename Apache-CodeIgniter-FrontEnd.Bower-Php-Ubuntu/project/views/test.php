@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     ];
 
     const router = new VueRouter({
-        mode: 'history', // 해시태그 삭제
+        //mode: 'history', // 해시태그 삭제
         routes // routes: routes 의 약어
     });
 
