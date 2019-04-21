@@ -1,0 +1,7 @@
+CREATE DATABASE mydb;
+
+CREATE TABLE mydb.user(
+  id VARCHAR(100) PRIMARY KEY,
+  name VARCHAR (100),
+  age INT
+);

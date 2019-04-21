@@ -1,0 +1,11 @@
+#http://raccoonyy.github.io/docker-usages-for-dev-environment-setup/
+docker-compose up -d
+
+docker run -d -p 3333:3306 \
+  -e MYSQL_ALLOW_EMPTY_PASSWORD=true \
+  --name mysql \
+  mysql:5.7
+
+mysql -h127.0.0.1 --port 3333 -uroot
+
+docker-compose up -d
