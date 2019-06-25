@@ -4,8 +4,6 @@
 docker build -t mymaster ./mymaster/
 docker-compose -f ./mymaster/docker-compose.yml up -d
 
-#sleep 10s
-
 #make myslave image
 docker build -t myslave ./myslave/
 docker-compose -f ./myslave/docker-compose.yml up -d
