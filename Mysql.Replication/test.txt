@@ -1,0 +1,22 @@
+#http://raccoonyy.github.io/docker-usages-for-dev-environment-setup/
+docker-compose up -d
+
+docker run -d -p 3333:3306 \
+  -e MYSQL_ALLOW_EMPTY_PASSWORD=true \
+  --name mysql \
+  mysql:5.7
+
+mysql -h127.0.0.1 --port 3333 -uroot
+
+docker-compose up -d
+
+#사용자 확인
+mysql> use mysql;
+mysql> select user, host from user;
+select user,host from mysql.user;
+
+#my.cnf 위치시키는법
+https://hub.docker.com/_/mysql
+
+#데이터 테스트
+insert into mydb.user values('kukaro','john',13);

@@ -1,0 +1,16 @@
+version: '3.3'
+
+services:
+  db-slave:
+    image: myslave
+    volumes:
+      - ./mysql-init-files/:/docker-entrypoint-initdb.d/
+      - ./mysql-config-files/:/etc/mysql/conf.d
+    restart: always
+    container_name: myslave
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD="true"
+    ports:
+      - '2222:3306'
+    expose:
+      - '2222'
