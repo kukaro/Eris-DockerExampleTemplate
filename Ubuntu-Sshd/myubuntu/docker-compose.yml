@@ -1,0 +1,11 @@
+version: '3.3'
+
+services:
+  db-master:
+    image: myubuntu
+    container_name: myubuntu
+    command: /usr/sbin/sshd -D
+    ports:
+      - '11111:22'
+    expose:
+      - '11111'
