@@ -1,7 +1,7 @@
 version: '3.3'
 
 services:
-  db-master:
+  myubuntu:
     image: myubuntu
     container_name: myubuntu
     command: /usr/sbin/sshd -D
