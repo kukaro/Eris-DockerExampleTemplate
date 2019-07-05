@@ -35,14 +35,10 @@ RUN mkdir -p /root/.vim/bundle
 RUN mv Vundle.vim /root/.vim/bundle
 ADD ./.vimrc /root/
 RUN vim -c 'PluginInstall' -c 'qa!'
-#RUN cd ~/.vim/bundle && git clone git://github.com/digitaltoad/vim-pug.git
+RUN cd /root/.vim/bundle/vim-prettier && npm install
 
 #install js beautify
 RUN npm -g install js-beautify
-
-
-
-
 
 EXPOSE 22 80 8080
 

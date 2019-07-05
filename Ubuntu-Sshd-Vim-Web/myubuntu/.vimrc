@@ -31,6 +31,7 @@ Plugin 'vim-gitgutter'
 Plugin 'townk/vim-autoclose'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'leafOfTree/vim-vue-plugin'
+Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
 call vundle#end()
 
 filetype plugin on
@@ -51,3 +52,7 @@ autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 " for css or scss
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+
+" prettier 저장할 때 자동으로 동작하기
+let g:prettier#autoformat = 0 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
