@@ -31,6 +31,7 @@ Plugin 'vim-gitgutter'
 Plugin 'townk/vim-autoclose'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'leafOfTree/vim-vue-plugin'
+Plugin 'AutoComplPop'
 Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
 call vundle#end()
 
