@@ -4,7 +4,7 @@ services:
   myubuntu:
     image: myubuntu
     container_name: myubuntu
-    command: /usr/sbin/sshd -D
+    command: /root/run/init.sh -D && nginx
     ports:
       - '10022:22'
       - '10080:80'

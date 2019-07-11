@@ -1,0 +1,13 @@
+version: '3.3'
+
+services:
+  myproxysql:
+    image: myproxysql
+    container_name: myproxysql
+    command: /root/run/init.sh
+    ports:
+      - '11111:22'
+      - '16032:6032'
+    expose:
+      - '11111'
+      - '16032'

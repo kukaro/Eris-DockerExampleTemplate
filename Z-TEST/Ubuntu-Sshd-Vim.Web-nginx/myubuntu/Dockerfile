@@ -4,6 +4,9 @@ RUN apt-get update
 RUN apt-get install -y openssh-server
 RUN mkdir /var/run/sshd
 
+#set argument
+ENV HOME_DIR /root
+
 #set password
 RUN echo 'root:root' |chpasswd
 
@@ -16,9 +19,6 @@ RUN mkdir /root/.ssh
 
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-#set test file
-ADD test /root/test/
 
 #install git, vim
 RUN apt-get update && apt-get install -y git
@@ -39,6 +39,12 @@ RUN cd /root/.vim/bundle/vim-prettier && npm install
 
 #install js beautify
 RUN npm -g install js-beautify
+
+#install nginx
+RUN apt-get install -y nginx
+
+#add script
+ADD ./run ${HOME_DIR}/run
 
 EXPOSE 22 80 8080
 
