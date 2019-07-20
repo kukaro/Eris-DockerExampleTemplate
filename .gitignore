@@ -3,3 +3,6 @@ static
 
 # IDE
 .idea
+
+# Spring remove target
+target
