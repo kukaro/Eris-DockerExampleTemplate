@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="net.theceres.AppTest" time="0.002" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="net.theceres.AppTest" time="0.004" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/jre/lib"/>
     <property name="java.vm.version" value="25.201-b09"/>
     <property name="gopherProxySet" value="false"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="/Users/kukaro/Desktop/Tomcat-Maven-Spring-Java-Ubuntu/SpringTest"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/kukaro/Eris-DockerExampleTemplate/Tomcat-Maven-Spring-Java-Ubuntu/SpringTest"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=":"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/Users/kukaro/Desktop/Tomcat-Maven-Spring-Java-Ubuntu/SpringTest"/>
+    <property name="user.dir" value="/Users/kukaro/Eris-DockerExampleTemplate/Tomcat-Maven-Spring-Java-Ubuntu/SpringTest"/>
     <property name="java.runtime.version" value="1.8.0_201-b09"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/jre/lib/endorsed"/>
@@ -65,5 +65,5 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16|lx.astxsvc.com|*.lx.astxsvc.com"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="net.theceres.AppTest" name="testApp" time="0.002"/>
+  <testcase classname="net.theceres.AppTest" name="testApp" time="0.004"/>
 </testsuite>
