@@ -1,0 +1,16 @@
+version: "3"
+services:
+  db:
+    image: store/oracle/database-enterprise:12.2.0.1
+    container_name: orc
+    volumes:
+      - ${PWD}/dhv/oracle:/ORCL
+#    command: /u01/app/oracle/product/12.2.0/dbhome_1/bin/sqlplus
+    environment:
+      - ORACLE_SID=orcl
+      - ORACLE_PWD=system
+      - ORACLE_MEM=3000
+    ports:
+      - 5500:5500
+      - 8080:8080
+      - 1521:1521

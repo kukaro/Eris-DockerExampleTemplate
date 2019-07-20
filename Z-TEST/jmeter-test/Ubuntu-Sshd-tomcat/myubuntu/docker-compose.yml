@@ -1,0 +1,13 @@
+version: '3.3'
+
+services:
+  myubuntu:
+    image: myubuntu
+    container_name: myubuntu
+    command: /root/run/init.sh
+    ports:
+      - '11111:22'
+      - '18080:8080'
+    expose:
+      - '11111'
+      - '18080'
