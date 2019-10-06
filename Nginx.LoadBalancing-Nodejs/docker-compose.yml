@@ -1,0 +1,46 @@
+version: '3.3'
+
+services:
+  mynginx:
+    image: mynginx
+    container_name: mynginx
+    command: /root/init.sh
+    ports:
+      - '10022:22'
+      - '10080:80'
+      - '18080:8080'
+    expose:
+      - '10022'
+      - '10080'
+      - '18080'
+
+  myserver1:
+    image: myserver
+    container_name: myserver1
+    command: /root/init.sh ${PORT_NUMBER1} ${MY_ADDRESS1}
+    ports:
+    - '20022:22'
+    - '20080:80'
+    - '28080:8080'
+    - ${PORT_NUMBER1}:${PORT_NUMBER1}
+    expose:
+    - '20022'
+    - '20080'
+    - '28080'
+    - ${PORT_NUMBER1}
+
+
+  myserver2:
+    image: myserver
+    container_name: myserver2
+    command: /root/init.sh ${PORT_NUMBER2} ${MY_ADDRESS2}
+    ports:
+    - '30022:22'
+    - '30080:80'
+    - '38080:8080'
+    - ${PORT_NUMBER2}:${PORT_NUMBER2}
+    expose:
+    - '30022'
+    - '30080'
+    - '38080'
+    - ${PORT_NUMBER2}

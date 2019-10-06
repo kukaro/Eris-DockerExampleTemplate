@@ -1,0 +1,12 @@
+upstream myserver {
+    server MY_ADDRESS1:PORT_NUMBER1;
+    server MY_ADDRESS2:PORT_NUMBER2;
+}
+
+server {
+    listen 80;
+
+    location / {
+        proxy_pass http://myserver;
+    }
+}
