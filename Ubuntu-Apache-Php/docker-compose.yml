@@ -1,0 +1,14 @@
+version: '3.3'
+
+services:
+  php-server-instance:
+    image: php-server
+    restart: always
+    container_name: php-server-instance
+    command: /usr/sbin/apache2ctl -D FOREGROUND
+    volumes:
+      - ./src/:/var/www/html
+    ports:
+      - '10080:80'
+    expose:
+      - '10080'
