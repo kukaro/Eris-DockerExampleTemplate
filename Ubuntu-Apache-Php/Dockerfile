@@ -15,5 +15,5 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # Install
 RUN apt-get -y install apache2
 RUN apt-get -y install php7.2
-RUN apt-get -y update && apt-get install libapache2-mod-php
+RUN apt-get -y install libapache2-mod-php
 RUN a2enmod php7.2
