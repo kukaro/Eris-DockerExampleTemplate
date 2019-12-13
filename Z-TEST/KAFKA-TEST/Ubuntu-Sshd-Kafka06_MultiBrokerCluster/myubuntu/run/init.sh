@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # if you want to see ports, you enter code below to view.
 #lsof -i -nP | grep LISTEN | awk '{print $(NF-1)" "$1}' | sort -u
+#lsof -i -nP | grep LISTEN | sort -u
 
 # test
 cd /root
