@@ -4,7 +4,8 @@ services:
   myubuntu:
     image: myubuntu
     container_name: myubuntu
-    command: /root/run/init.sh
+#    command: /root/run/init.sh
+    command: /usr/sbin/sshd -D
     ports:
       - '10022:22'
     expose:

@@ -5,9 +5,11 @@
 #lsof -i -nP | grep LISTEN | awk '{print $(NF-1)" "$1}' | sort -u
 #lsof -i -nP | grep LISTEN | sort -u
 
-# test
+
+# setting
 cd /root
 echo 'my test' > test.txt
+./run/vim.sh
 
 cd kafka
 
