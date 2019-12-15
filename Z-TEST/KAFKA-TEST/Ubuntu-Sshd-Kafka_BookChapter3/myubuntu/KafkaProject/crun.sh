@@ -1,0 +1,1 @@
+java -cp build/libs/KafkaProject.jar:build/install/KafkaProject/lib/* KafkaProject.Consumer
