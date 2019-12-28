@@ -15,3 +15,5 @@ js, jsx, vue, html, css, less, stylus, scss, sass, ts, json
     + spring cloud stream에 대한 설명을 볼 수 있다.
 - https://cloud.spring.io/spring-cloud-stream-binder-kafka/spring-cloud-stream-binder-kafka.html
     + spring cloud stream binder kafka에 대한 설명을 볼 수 있다.
+- https://dzone.com/articles/kafka-with-spring-cloud-stream
+    + 설명이 좀 부실하던데 예제를 볼 수 있다.
