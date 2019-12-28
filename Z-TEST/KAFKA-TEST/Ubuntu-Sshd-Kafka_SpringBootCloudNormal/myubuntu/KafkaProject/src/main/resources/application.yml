@@ -1,0 +1,35 @@
+server.port: 0
+
+spring.cloud.stream:
+#  binders:
+  kafka:
+    binder:
+      brokers: localhost
+      defaultBrokerPort: 9092
+  bindings:
+    log-in-0:
+      destination: test
+      group: mygroup0
+#  bindings:
+#    topic-post:
+#      binder: kafka-real
+#      destination: ${KAFKA_TOPIC}
+#      contentType: application/json
+#      nativeDecoding: true
+#      group: ${KAFKA_TROMM_CONSUMER_GROUP_ID}
+#      consumer:
+##        headerMode: raw
+#        max-attempts: 3
+#        backoff-initial-interval: 3000
+#  kafka:
+#    bindings:
+#      tistory-post:
+#        consumer:
+#          requeue-rejected: true
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include:
+#          - bindings
+#          - health

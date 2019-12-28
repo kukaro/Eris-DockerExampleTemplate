@@ -5,6 +5,7 @@
 #lsof -i -nP | grep LISTEN | awk '{print $(NF-1)" "$1}' | sort -u
 #lsof -i -nP | grep LISTEN | sort -u
 
+hostname=`hostname -I | tr -d ' '`
 
 # setting
 cd /root
@@ -12,6 +13,8 @@ echo 'run init.sh' >> log.txt
 ./run/vim.sh
 
 cd kafka
+
+sed -ri "s/#advertised.listeners=PLAINTEXT:\/\/your.host.name:9092/listeners=PLAINTEXT:\/\/${hostname}:9092/" config/server.properties
 
 # zookeeper on
 ./bin/zookeeper-server-start.sh -daemon config/zookeeper.properties

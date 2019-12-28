@@ -28,6 +28,13 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.apache.kafka/kafka
     implementation group: 'org.apache.kafka', name: 'kafka_2.12', version: '2.3.0'
+
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.2.2.RELEASE'
+
+    // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-stream-binder-kafka
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-stream-binder-kafka', version: '3.0.0.RELEASE'
+
 //    implementation group: 'org.apache.logging.log4j', name: 'log4j', version: '2.11.2'
 //    implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.11.2'
 
