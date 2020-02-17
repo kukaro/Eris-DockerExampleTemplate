@@ -42,12 +42,26 @@ RUN mv mysql-connector-java-5.1.48/*.jar ./hive/lib
 RUN rm -rf mysql-connector-java-5.1.48
 COPY hive-site.xml /root/hive/conf
 
+#hbase
+RUN wget http://archive.apache.org/dist/hbase/1.4.10/hbase-1.4.10-bin.tar.gz
+RUN tar -xvzf hbase-1.4.10-bin.tar.gz
+RUN rm hbase-1.4.10-bin.tar.gz
+RUN mv hbase-1.4.10 hbase
+RUN sed -i 's/# export JAVA_HOME=\/usr\/java\/jdk1.6.0\//export JAVA_HOME=\/usr\/java\/default/g' /root/hbase/conf/hbase-env.sh
+RUN sed -i 's/<configuration>/<configuration>\
+<property>\
+<name>hbase.rootdir<\/name>\
+<value>file:\/\/\/root\/hbase\/hbase_data<\/value>\
+<\/property>/g' /root/hbase/conf/hbase-site.xml
+
 RUN echo 'export HADOOP_HOME="/usr/local/hadoop"' >> .bash_profile
 RUN echo 'export PATH=$PATH:$HADOOP_HOME/bin' >> .bash_profile
 RUN echo 'export PATH=$PATH:$HADOOP_HOME/sbin' >> .bash_profile
 RUN echo 'export PATH=$PATH:/usr/java/default/bin' >> .bash_profile
 RUN echo 'export HIVE_HOME="/root/hive"' >> .bash_profile
 RUN echo 'export PATH=$PATH:$HIVE_HOME/bin' >> .bash_profile
+RUN echo 'export HBASE_HOME="/root/hbase"' >> .bash_profile
+RUN echo 'export PATH=$PATH:$HBASE_HOME/bin' >> .bash_profile
 RUN source /root/.bash_profile
 RUN chmod -R 777 /root/script
 

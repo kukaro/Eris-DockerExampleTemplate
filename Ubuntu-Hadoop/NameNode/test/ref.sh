@@ -26,6 +26,7 @@ INSERT OVERWRITE TABLE Names SELECT * from Names_text;
 select * from Names_text;
 drop table Names_text;
 
+#아래꺼 실행해야 hive켜짐
 source .bash_profile
 mysql_secure_installation
 mysql -uroot -proot -e "create database hive"
