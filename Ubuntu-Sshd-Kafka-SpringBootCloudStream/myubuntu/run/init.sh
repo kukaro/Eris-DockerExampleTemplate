@@ -5,16 +5,22 @@
 #lsof -i -nP | grep LISTEN | awk '{print $(NF-1)" "$1}' | sort -u
 #lsof -i -nP | grep LISTEN | sort -u
 
-hostname=`hostname -I | tr -d ' '`
+
 
 # setting
 cd /root
 echo 'run init.sh' >> log.txt
 ./run/vim.sh
 
+<<<<<<< HEAD
 cd kafka
 
 sed -ri "s/#advertised.listeners=PLAINTEXT:\/\/your.host.name:9092/advertised.listeners=PLAINTEXT:\/\/${hostname}:9092/" config/server.properties
+=======
+cd kafka #카프카가 설치되어있는 디렉터리로 이동한다.
+hostname=`hostname -I | tr -d ' '`
+sed -ri "s/#advertised.listeners=PLAINTEXT:\/\/your.host.name:9092/listeners=PLAINTEXT:\/\/${hostname}:9092/" config/server.properties
+>>>>>>> 38fe98814109dd7ea5643805916715692aa0a9c6
 
 # zookeeper on
 ./bin/zookeeper-server-start.sh -daemon config/zookeeper.properties

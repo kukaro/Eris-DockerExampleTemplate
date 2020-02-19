@@ -1,7 +1,6 @@
 server.port: 0
 
 spring.cloud.stream:
-#  binders:
   kafka:
     binder:
       brokers: localhost

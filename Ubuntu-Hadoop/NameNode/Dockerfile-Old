@@ -1,0 +1,83 @@
+FROM ubuntu:latest
+MAINTAINER kukaro <justkukaro@naver.com>
+RUN apt-get update
+RUN apt-get install -y openssh-server
+RUN apt-get install -y pdsh
+RUN mkdir /var/run/sshd
+
+#set password
+RUN echo 'root:root' |chpasswd
+
+#replace sshd_config
+RUN sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
+
+RUN ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+RUN cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+RUN chmod 0600 ~/.ssh/authorized_keys
+RUN echo "ssh" > /etc/pdsh/rcmd_default
+
+#make .ssh
+RUN mkdir -p /root/.ssh
+
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+#set test file
+ADD test /root/test/
+
+#install git, vim
+RUN apt-get update && apt-get install -y git
+RUN apt-get install -y vim
+
+#install nodejs
+RUN apt-get install -y nodejs
+RUN apt-get install -y npm
+RUN apt-get install -y curl
+
+#setting vim
+RUN git clone https://github.com/VundleVim/Vundle.vim.git
+RUN mkdir -p /root/.vim/bundle
+RUN mv Vundle.vim /root/.vim/bundle
+ADD .vimrc /root/
+RUN vim -c 'PluginInstall' -c 'qa!'
+RUN cd /root/.vim/bundle/vim-prettier && npm install
+
+#install java and hadoop
+RUN apt-get install -y openjdk-11-jdk
+RUN apt-get install -y net-tools
+WORKDIR /root
+RUN wget http://mirror.navercorp.com/apache/hadoop/common/hadoop-3.1.3/hadoop-3.1.3.tar.gz
+RUN tar zxvf hadoop-3.1.3.tar.gz
+RUN rm -rf hadoop-3.1.3.tar.gz
+RUN mv hadoop-3.1.3 ./hadoop
+RUN echo 'export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64' >> .bashrc
+RUN echo 'export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64' >> ./hadoop/etc/hadoop/hadoop-env.sh
+RUN echo 'export HADOOP_HOME="/root/hadoop"' >> .bashrc
+RUN echo 'export PATH=$PATH:$HADOOP_HOME/bin' >> .bashrc
+RUN echo 'export PATH=$PATH:$HADOOP_HOME/sbin' >> .bashrc
+RUN echo 'export HADOOP_MAPRED_HOME=$HADOOP_HOME' >> .bashrc
+RUN echo 'export HADOOP_COMMON_HOME=$HADOOP_HOME' >> .bashrc
+RUN echo 'export HADOOP_HDFS_HOME=$HADOOP_HOME' >> .bashrc
+RUN echo 'export YARN_HOME=$HADOOP_HOME' >> .bashrc
+RUN echo 'export HDFS_NAMENODE_USER="root"' >> .bashrc
+RUN echo 'export HDFS_DATANODE_USER="root"' >> .bashrc
+RUN echo 'export HDFS_SECONDARYNAMENODE_USER="root"' >> .bashrc
+RUN echo 'export YARN_RESOURCEMANAGER_USER="root"' >> .bashrc
+RUN echo 'export YARN_NODEMANAGER_USER="root"' >> .bashrc
+
+#set config
+RUN sed -e 's/<configuration>/\
+<configuration>\n\
+    <property>\n\
+        <name>fs.defaultFS<\/name>\n\
+        <value>hdfs:\/\/localhost:9000<\/value>\n\
+    <\/property>\
+    <property>\
+        <name>dfs.replication<\/name>\
+        <value>1<\/value>\
+    <\/property>/g' ~/hadoop/etc/hadoop/core-site.xml
+
+EXPOSE 22 80 8080
+
+CMD ["/usr/sbin/sshd", "-D"]

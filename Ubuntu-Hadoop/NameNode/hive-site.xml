@@ -1,0 +1,26 @@
+<configuration>
+    <property>
+        <name>hive.metastore.local</name>
+        <value>false</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionURL</name>
+        <value>jdbc:mysql://localhost:3306/hive?createDatabaseifNotExist=true&amp;useSSL=false</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionDriverName</name>
+        <value>com.mysql.jdbc.Driver</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionUserName</name>
+        <value>root</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionPassword</name>
+        <value>root</value>
+    </property>
+    <property>
+        <name>hive.metastore.urls</name>
+        <value>thrift://node5.dat:10000</value>
+    </property>
+</configuration>
