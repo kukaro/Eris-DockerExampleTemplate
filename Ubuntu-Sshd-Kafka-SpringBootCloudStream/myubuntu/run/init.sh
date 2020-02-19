@@ -14,7 +14,7 @@ echo 'run init.sh' >> log.txt
 
 cd kafka
 
-sed -ri "s/#advertised.listeners=PLAINTEXT:\/\/your.host.name:9092/listeners=PLAINTEXT:\/\/${hostname}:9092/" config/server.properties
+sed -ri "s/#advertised.listeners=PLAINTEXT:\/\/your.host.name:9092/advertised.listeners=PLAINTEXT:\/\/${hostname}:9092/" config/server.properties
 
 # zookeeper on
 ./bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
