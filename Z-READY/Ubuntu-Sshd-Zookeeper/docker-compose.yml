@@ -1,0 +1,56 @@
+version: '3.3'
+
+services:
+  myzookeeper01:
+    image: myzookeeper
+    container_name: myzookeeper01
+    command: /root/test/init.sh -D
+    volumes:
+      - ./ip-list/myzookeeper01/:/root/myip/
+      - ./myzookeeper/project/:/root/project/
+    ports:
+      - '10022:22'
+      - '10080:80'
+      - '18080:8080'
+      - '12181:2181'
+    expose:
+      - '10022'
+      - '10080'
+      - '18080'
+      - '12181'
+
+  myzookeeper02:
+    image: myzookeeper
+    container_name: myzookeeper02
+    command: /root/test/init.sh -D
+    volumes:
+      - ./ip-list/myzookeeper02/:/root/myip/
+      - ./myzookeeper/project/:/root/project/
+    ports:
+      - '20022:22'
+      - '20080:80'
+      - '28080:8080'
+      - '22181:2181'
+    expose:
+      - '20022'
+      - '20080'
+      - '28080'
+      - '22181'
+
+  myzookeeper03:
+    image: myzookeeper
+    container_name: myzookeeper03
+    command: /root/test/init.sh -D
+    volumes:
+      - ./ip-list/myzookeeper03/:/root/myip/
+      - ./myzookeeper/project/:/root/project/
+    ports:
+      - '30022:22'
+      - '30080:80'
+      - '38080:8080'
+      - '32181:2181'
+    expose:
+      - '30022'
+      - '30080'
+      - '38080'
+      - '32181'
