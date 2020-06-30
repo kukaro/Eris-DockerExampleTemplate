@@ -1,0 +1,30 @@
+version: '3.3'
+
+services:
+  mysqltest:
+    image: mysqltest
+    container_name: mysqltest
+    command: mysqld
+    restart: always
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD="true"
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=root
+    ports:
+      - '13306:3306'
+    expose:
+      - '13306'
+  laraveltest:
+    image: laraveltest
+    container_name: laraveltest
+    command: /usr/sbin/apache2ctl -D FOREGROUND
+    volumes:
+      - ./project/src/:/var/www/html
+    ports:
+      - '11122:22'
+      - '11180:80'
+      - '18180:8080'
+    expose:
+      - '11122'
+      - '11180'
+      - '18180'
