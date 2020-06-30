@@ -1,0 +1,1 @@
+cat /var/lib/mysql/global.log
