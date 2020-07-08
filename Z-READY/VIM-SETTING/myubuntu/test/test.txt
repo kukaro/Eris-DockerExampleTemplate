@@ -1,0 +1,1 @@
+set autoindent\nset cindent\n\nset nu\n\nset ts=4\nset shiftwidth=4\n\nset laststatus=2\nset statusline=\\ %<%l:%v\\ [%P]%=%a\\ %h%m%r\\ %F\\\n\nset autoread\nset paste\nset cindent\nset showmatch\nset autoindent\nset cindent\nset shiftwidth=4\n

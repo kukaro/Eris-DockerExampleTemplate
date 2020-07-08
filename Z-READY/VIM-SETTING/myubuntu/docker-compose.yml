@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+  myubuntu:
+    image: myubuntu
+    container_name: myubuntu
+    command: /root/test/init.sh
+    volumes:
+      - ./src/:/var/www/html
+      - ./test/:/root/test
+      - ./cpp/:/root/cpp
+    ports:
+      - '40022:22'
+      - '40080:80'
+      - '48080:8080'
+    expose:
+      - '40022'
+      - '40080'
+      - '48080'
