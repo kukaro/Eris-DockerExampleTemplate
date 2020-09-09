@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  myci:
+    build:
+      context: .
+    image: myci3
+    container_name: myci3
+    command: /usr/sbin/apache2ctl -D FOREGROUND
+    volumes:
+      - ./CI3/:/var/www/html/
+    ports:
+      - '10080:80'
+    expose:
+      - '10080'
