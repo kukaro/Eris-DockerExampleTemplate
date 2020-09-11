@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  mine:
+    build:
+      context: .
+    image: mine
+    container_name: mine
+    command: nginx -g 'daemon off;'
+    volumes:
+#nginx html경로와 project를 직접연결
+      - ./project/:/usr/share/nginx/html/
+#혹시 몰라서 한경로 더 뚫어놓음
+      - ./mylink/:/root/mylink/
+    ports:
+      - '10080:80'
+    expose:
+      - '10080'

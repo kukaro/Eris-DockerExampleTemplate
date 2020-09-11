@@ -1,0 +1,1 @@
+docker exec -it mine /bin/bash
