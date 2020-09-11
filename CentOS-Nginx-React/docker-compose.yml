@@ -6,7 +6,7 @@ services:
       context: .
     image: mine
     container_name: mine
-    command: nginx -g 'daemon off;'
+    command: /root/tomcat/bin/catalina.sh run
     volumes:
 #nginx html경로와 project를 직접연결
       - ./project/:/usr/share/nginx/html/
@@ -14,5 +14,7 @@ services:
       - ./mylink/:/root/mylink/
     ports:
       - '10080:80'
+      - '18080:8080'
     expose:
       - '10080'
+      - '18080'
