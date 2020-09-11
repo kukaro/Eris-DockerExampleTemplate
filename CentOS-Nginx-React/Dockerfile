@@ -1,4 +1,4 @@
-# Install ubuntu
+# Install centos
 FROM centos:7
 
 ENV DEST /var/www/html
