@@ -1,6 +1,8 @@
 # Install centos
 FROM centos:7
 
+ENV DEST /var/www/html
+
 #centos7에서는 nginx를 설치하기위해서 레포지터리를 추가해야하는데 로컬에서 레포지터리 경로 작성해서 도커 컨테이너로 옮김
 COPY ./file/nginx.repo /etc/yum.repos.d/
 #nginx를 베이스로켜되 tomcat 껏다컷다 가능하게 하기위해서 entrypoint.sh를 만듦
@@ -35,6 +37,13 @@ RUN tar -xvzf apache-tomcat-8.5.57.tar.gz
 RUN rm -rf apache-tomcat-8.5.57.tar.gz
 RUN mv apache-tomcat-8.5.57/ tomcat
 RUN yum -y install java
+
+#프로젝트 싱크안하고 그냥 넣음
+COPY ./project /root/project
+#entrypoint line end를 리눅스 스타일로 바꿈
+RUN dos2unix /root/entrypoint.sh
+#workdir를 임시로 바꾸고 npm install
+#RUN cd /root/project/my-react-app && npm install
 
 #외부에 접속가능하게 포트 열어줌
 EXPOSE 80 8080
