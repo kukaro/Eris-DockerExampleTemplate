@@ -6,7 +6,7 @@ services:
       context: .
     image: mine
     container_name: mine
-    command: /root/tomcat/bin/catalina.sh run
+    command: /root/entrypoint.sh
     volumes:
 #nginx html경로와 project를 직접연결
       - ./project/:/usr/share/nginx/html/
