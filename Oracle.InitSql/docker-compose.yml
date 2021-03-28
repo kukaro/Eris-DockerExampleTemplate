@@ -1,0 +1,14 @@
+version: '3.3'
+
+services:
+  db:
+    image: myora
+    entrypoint: /entrypoint.sh
+    #    volumes:
+#      - ./mysql-init-files/:/docker-entrypoint-initdb.d/
+    restart: always
+    container_name: myora
+    ports:
+      - '11521:1521'
+    expose:
+      - '11521'
