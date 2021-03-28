@@ -8,3 +8,6 @@
     * system
   * password
     * oracle
+---
+* Reference
+  * https://github.com/jaspeen/oracle-11g
