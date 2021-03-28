@@ -3,7 +3,7 @@ version: '3.3'
 services:
   db:
     image: myora
-    entrypoint: /entrypoint.sh
+    entrypoint: /root/script/entrypoint.sh
     #    volumes:
 #      - ./mysql-init-files/:/docker-entrypoint-initdb.d/
     restart: always
