@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+  mynginx:
+    image: myvuetify
+    container_name: myvuetify
+    volumes:
+      - ./project/my-app/public/:/usr/share/nginx/html/my-app/public/
+      - ./project/my-app/src/:/usr/share/nginx/html/my-app/src/
+      - ./project/my-app/.gitignore:/usr/share/nginx/html/my-app/.gitignore
+      - ./project/my-app/babel.config.js:/usr/share/nginx/html/my-app/babel.config.js
+      - ./project/my-app/package.json:/usr/share/nginx/html/my-app/package.json
+      - ./project/my-app/package-lock.json:/usr/share/nginx/html/my-app/package-lock.json
+      - ./project/my-app/README.md:/usr/share/nginx/html/my-app/README.md
+      command: /root/script/init.sh
+    ports:
+      - '10080:80'
+      - '18080:8080'
+    expose:
+      - '10080'
+      - '18080'
