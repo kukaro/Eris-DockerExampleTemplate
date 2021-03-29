@@ -6,3 +6,5 @@ static
 
 # Spring remove target
 target
+
+node_modules
