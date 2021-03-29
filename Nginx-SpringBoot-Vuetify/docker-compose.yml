@@ -12,7 +12,7 @@ services:
       - ./project/my-app/package.json:/usr/share/nginx/html/my-app/package.json
       - ./project/my-app/package-lock.json:/usr/share/nginx/html/my-app/package-lock.json
       - ./project/my-app/README.md:/usr/share/nginx/html/my-app/README.md
-      command: /root/script/init.sh
+    command: /root/script/init.sh
     ports:
       - '10080:80'
       - '18080:8080'
