@@ -2,60 +2,53 @@
   <div id="login">
     <v-app>
       <v-form
+          class="ma-10"
           ref="form"
           lazy-validation
       >
         <v-text-field
+            v-model="userId"
             :counter="10"
-            label="Name"
+            label="아이디"
             required
         ></v-text-field>
 
         <v-text-field
-            label="E-mail"
+            v-model="userPassword"
+            label="비밀번호"
+            :type="'password'"
             required
         ></v-text-field>
 
-        <v-select
-            :rules="[v => !!v || 'Item is required']"
-            label="Item"
-            required
-        ></v-select>
-
-        <v-checkbox
-            :rules="[v => !!v || 'You must agree to continue!']"
-            label="Do you agree?"
-            required
-        ></v-checkbox>
 
         <v-btn
-            :disabled="!valid"
             color="success"
-            class="mr-4"
+            @click="loginEvent({userId,userPassword})"
         >
           Validate
         </v-btn>
 
-        <v-btn
-            color="error"
-            class="mr-4"
-        >
-          Reset Form
-        </v-btn>
-
-        <v-btn
-            color="warning"
-        >
-          Reset Validation
-        </v-btn>
       </v-form>
     </v-app>
   </div>
 </template>
 
 <script>
+import {mapMutations} from 'vuex';
+
 export default {
-  name: "login-page"
+  name: "login-page",
+  data() {
+    return {
+      userId: '',
+      userPassword: '',
+    }
+  },
+  methods: {
+    ...mapMutations({
+      loginEvent: 'loginEvent'
+    }),
+  }
 }
 </script>
 
