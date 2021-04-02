@@ -21,11 +21,11 @@
         ></v-text-field>
 
 
-        <v-btn
+        <v-btn block
             color="success"
             @click="loginEvent({userId,userPassword})"
         >
-          Validate
+          로그인
         </v-btn>
 
       </v-form>
