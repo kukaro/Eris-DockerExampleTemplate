@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+  mynginx:
+    image: myspring
+    container_name: myspring
+    volumes:
+      - ./project/gradle/:/root/project/gradle/
+      - ./project/src/:/root/project/src/
+      - ./project/.gitignore:/root/project/.gitignore
+      - ./project/build.gradle.kts:/root/project/build.gradle.kts
+      - ./project/gradlew:/root/project/gradlew
+      - ./project/gradlew.bat:/root/project/gradlew.bat
+      - ./project/HELP.md:/root/project/HELP.md
+      - ./project/settings.gradle.kts/root/project/settings.gradle.kts
+    command: /root/script/init.sh
+    ports:
+      - '10080:80'
+      - '18080:8080'
+    expose:
+      - '10080'
+      - '18080'
