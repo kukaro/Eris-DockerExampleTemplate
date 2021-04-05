@@ -3,6 +3,7 @@ MAINTAINER kukaro <justkukaro@naver.com>
 RUN apt-get update
 ENV HOME ROOT
 ENV HTML_PATH /usr/share/nginx/html
+ENV JAVA_VER 11
 
 #set timezone
 ENV TZ=Asia/Seoul
@@ -28,6 +29,9 @@ RUN cd $HOME/.vim/bundle/vim-prettier && npm install
 #install nginx
 RUN apt-get install -y nginx
 ADD ./script/ /root/script
+
+#install java
+RUN apt-get install -y openjdk-${JAVA_VER}-jdk
 
 
 EXPOSE 22 80 8080

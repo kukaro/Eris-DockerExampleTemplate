@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-docker stop myvuetify
-docker rm myvuetify
+docker stop myspring
+docker rm myspring

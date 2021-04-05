@@ -12,7 +12,7 @@ services:
       - ./project/gradlew:/root/project/gradlew
       - ./project/gradlew.bat:/root/project/gradlew.bat
       - ./project/HELP.md:/root/project/HELP.md
-      - ./project/settings.gradle.kts/root/project/settings.gradle.kts
+      - ./project/settings.gradle.kts:/root/project/settings.gradle.kts
     command: /root/script/init.sh
     ports:
       - '10080:80'
