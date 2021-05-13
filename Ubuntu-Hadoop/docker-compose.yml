@@ -6,6 +6,7 @@ services:
     container_name: namenode
     volumes:
     - ./NameNode/test/:/root/test
+    - ./NameNode/script/:/root/script/
     ports:
       - '10022:22'
       - '10080:80'

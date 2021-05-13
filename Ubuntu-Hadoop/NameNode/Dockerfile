@@ -1,12 +1,20 @@
 FROM sequenceiq/hadoop-docker
 
+#install necessary package
 RUN rpm --rebuilddb && yum -y install vim
-
 RUN rpm --rebuilddb && yum -y install httpd
-
-#setting vim
 RUN rpm --rebuilddb && yum -y install git
 RUN rpm --rebuilddb && yum -y install wget
+#RUN wget https://services.gradle.org/distributions/gradle-4.1-bin.zip -P /root
+
+#install gradle
+#RUN unzip -d /root /root/gradle-4.1-bin.zip
+#RUN rm /root/gradle-4.1-bin.zip
+#RUN ls /root
+#RUN mv /root/gradle-4.1 /root/gradle
+#RUN ln -s /root/gradle/bin/gradle /usr/bin/gradle
+
+#setting vim
 RUN wget http://springdale.math.ias.edu/data/puias/computational/6/x86_64/git-1.8.3.1-1.sdl6.x86_64.rpm
 RUN wget http://springdale.math.ias.edu/data/puias/computational/6/x86_64/perl-Git-1.8.3.1-1.sdl6.noarch.rpm
 RUN yum remove git -y
@@ -19,8 +27,6 @@ ADD .vimrc /root/
 RUN vim -c 'PluginInstall' -c 'qa!'
 RUN rm -rf *.rpm
 
-#add script
-COPY script /root/script/
 COPY .vimrc /root
 
 #mysql
@@ -54,6 +60,7 @@ RUN sed -i 's/<configuration>/<configuration>\
 <value>file:\/\/\/root\/hbase\/hbase_data<\/value>\
 <\/property>/g' /root/hbase/conf/hbase-site.xml
 
+RUN rpm --rebuilddb && yum -y install java
 RUN echo 'export HADOOP_HOME="/usr/local/hadoop"' >> .bash_profile
 RUN echo 'export PATH=$PATH:$HADOOP_HOME/bin' >> .bash_profile
 RUN echo 'export PATH=$PATH:$HADOOP_HOME/sbin' >> .bash_profile
@@ -63,7 +70,6 @@ RUN echo 'export PATH=$PATH:$HIVE_HOME/bin' >> .bash_profile
 RUN echo 'export HBASE_HOME="/root/hbase"' >> .bash_profile
 RUN echo 'export PATH=$PATH:$HBASE_HOME/bin' >> .bash_profile
 RUN source /root/.bash_profile
-RUN chmod -R 777 /root/script
 
 EXPOSE 22 80 8080
 
