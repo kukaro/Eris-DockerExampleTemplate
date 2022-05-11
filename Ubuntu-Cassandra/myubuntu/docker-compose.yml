@@ -4,7 +4,7 @@ services:
   myubuntu:
     image: myubuntu
     container_name: myubuntu
-    command: /root/run/run.sh
+    command: /root/run/init.sh
     ports:
       - '10080:80'
       - '19042:9042'
