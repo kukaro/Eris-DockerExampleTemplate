@@ -20,17 +20,15 @@ ENV CASSANDRA_VERSION 3.11.10
 WORKDIR /$HOME
 RUN apt-get install -y tar
 RUN apt-get install -y openjdk-8-jdk
-RUN curl -OL http://apache.mirror.digitalpacific.com.au/cassandra/${CASSANDRA_VERSION}/apache-cassandra-${CASSANDRA_VERSION}-bin.tar.gz
-RUN gpg --print-md SHA256 apache-cassandra-${CASSANDRA_VERSION}-bin.tar.gz
-RUN curl -L https://downloads.apache.org/cassandra/${CASSANDRA_VERSION}/apache-cassandra-${CASSANDRA_VERSION}-bin.tar.gz.sha256
-RUN tar xzvf apache-cassandra-${CASSANDRA_VERSION}-bin.tar.gz
-RUN rm -rf apache-cassandra-${CASSANDRA_VERSION}-bin.tar.gz
-RUN mv apache-cassandra-${CASSANDRA_VERSION} cassandra
+RUN echo "deb https://downloads.apache.org/cassandra/debian 40x main" | tee -a /etc/apt/sources.list.d/cassandra.sources.list
+RUN curl https://downloads.apache.org/cassandra/KEYS | apt-key add -
+RUN apt-get update
+RUN apt-get install cassandra
 
 #change chown
 RUN useradd -m -s /bin/bash newuser
 RUN groupadd newusergroup
-RUN chown newuser:newusergroup -R cassandra
+RUN chown newuser:newusergroup -R /etc/cassandra
 
 #run
 ADD ./run ${HOME}/run
