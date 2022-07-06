@@ -1,0 +1,11 @@
+version: '3.3'
+
+services:
+  zookeeper_test:
+    image: zookeeper_test
+    container_name: zookeeper_test
+    command: /root/sh/entrypoint.sh
+    ports:
+      - '10022:22'
+    expose:
+      - '10022'

@@ -1,4 +1,4 @@
-FROM centos:latest
+FROM centos:centos7
 MAINTAINER kukaro <justkukaro@naver.com>
 
 RUN yum -y update
