@@ -24,7 +24,6 @@ RUN cd ${HOME} && tar -xzvf apache-zookeeper-${ZOOKEEPER_VER}-bin.tar.gz
 RUN cd ${HOME} && rm apache-zookeeper-${ZOOKEEPER_VER}-bin.tar.gz
 RUN cd ${HOME} && mv apache-zookeeper-${ZOOKEEPER_VER}-bin zookeeper
 
-
 EXPOSE 22 9092
 
 CMD ["/usr/sbin/sshd", "-D"]
