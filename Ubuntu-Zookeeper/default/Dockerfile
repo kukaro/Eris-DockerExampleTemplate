@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 RUN apt-get update
 
 ENV HOME /root
@@ -9,6 +9,8 @@ RUN apt-get install -y vim
 RUN apt-get install -y wget
 
 #install nodejs
+ENV TZ=Asia/Seoul
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get install -y nodejs
 RUN apt-get install -y npm
 RUN apt-get install -y curl
@@ -18,7 +20,7 @@ ADD ./sh ${HOME}/sh
 #install kafka
 ENV ZOOKEEPER_VER 3.7.1
 RUN apt-get install -y tar
-RUN apt-get install -y openjdk-8-jdk
+RUN apt-get update && apt-get install -y openjdk-13-jdk
 RUN cd ${HOME} && wget https://dlcdn.apache.org/zookeeper/zookeeper-${ZOOKEEPER_VER}/apache-zookeeper-${ZOOKEEPER_VER}-bin.tar.gz
 RUN cd ${HOME} && tar -xzvf apache-zookeeper-${ZOOKEEPER_VER}-bin.tar.gz
 RUN cd ${HOME} && rm apache-zookeeper-${ZOOKEEPER_VER}-bin.tar.gz
