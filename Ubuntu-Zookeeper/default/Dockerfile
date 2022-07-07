@@ -26,6 +26,9 @@ RUN cd ${HOME} && tar -xzvf apache-zookeeper-${ZOOKEEPER_VER}-bin.tar.gz
 RUN cd ${HOME} && rm apache-zookeeper-${ZOOKEEPER_VER}-bin.tar.gz
 RUN cd ${HOME} && mv apache-zookeeper-${ZOOKEEPER_VER}-bin zookeeper
 
+# after install
+ADD ./zoo_sample.cfg ${HOME}/zookeeper/conf/zoo.cfg
+
 EXPOSE 22 9092
 
 CMD ["/usr/sbin/sshd", "-D"]
