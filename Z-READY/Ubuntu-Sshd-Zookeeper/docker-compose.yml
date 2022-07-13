@@ -8,6 +8,9 @@ services:
     volumes:
       - ./ip-list/myzookeeper01/:/root/myip/
       - ./myzookeeper/project/:/root/project/
+    networks:
+      zookeeper_network:
+        ipv4_address: 192.168.99.2
     ports:
       - '10022:22'
       - '10080:80'
@@ -26,6 +29,9 @@ services:
     volumes:
       - ./ip-list/myzookeeper02/:/root/myip/
       - ./myzookeeper/project/:/root/project/
+    networks:
+      zookeeper_network:
+        ipv4_address: 192.168.99.3
     ports:
       - '20022:22'
       - '20080:80'
@@ -44,6 +50,9 @@ services:
     volumes:
       - ./ip-list/myzookeeper03/:/root/myip/
       - ./myzookeeper/project/:/root/project/
+    networks:
+      zookeeper_network:
+        ipv4_address: 192.168.99.4
     ports:
       - '30022:22'
       - '30080:80'
@@ -54,3 +63,13 @@ services:
       - '30080'
       - '38080'
       - '32181'
+
+networks:
+  zookeeper_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.99.0/24
+          gateway: 192.168.99.1
+

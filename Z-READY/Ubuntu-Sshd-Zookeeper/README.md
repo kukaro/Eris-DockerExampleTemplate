@@ -12,3 +12,12 @@
 192.168.48.4 zookeeper2
 ```
 * 모든 서버에서 zkServer.sh start를 실행한다.
+
+---
+
+#참조
+
+* 도커 네트워크 설정
+  * https://sinna94.tistory.com/entry/docker-compose-default-network-subnet-%EC%84%A4%EC%A0%95
+  * https://youngmind.tistory.com/entry/%EB%8F%84%EC%BB%A4-%EA%B0%95%EC%A2%8C-3-%EB%8F%84%EC%BB%A4-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-1
+  * https://hulint.tistory.com/45
