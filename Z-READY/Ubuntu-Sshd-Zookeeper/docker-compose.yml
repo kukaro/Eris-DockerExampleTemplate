@@ -21,6 +21,10 @@ services:
       - '10080'
       - '18080'
       - '12181'
+    extra_hosts:
+      - 'zookeeper1:192.168.99.2'
+      - 'zookeeper2:192.168.99.3'
+      - 'zookeeper3:192.168.99.4'
 
   myzookeeper02:
     image: myzookeeper
@@ -42,6 +46,10 @@ services:
       - '20080'
       - '28080'
       - '22181'
+    extra_hosts:
+      - 'zookeeper1:192.168.99.2'
+      - 'zookeeper2:192.168.99.3'
+      - 'zookeeper3:192.168.99.4'
 
   myzookeeper03:
     image: myzookeeper
@@ -63,6 +71,10 @@ services:
       - '30080'
       - '38080'
       - '32181'
+    extra_hosts:
+      - 'zookeeper1:192.168.99.2'
+      - 'zookeeper2:192.168.99.3'
+      - 'zookeeper3:192.168.99.4'
 
 networks:
   zookeeper_network:
