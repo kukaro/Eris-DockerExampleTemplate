@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: discodeit-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: discodeit_user
+      POSTGRES_PASSWORD: discodeit1234
+      POSTGRES_DB: discodeit
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data #도커가 관리하는 named 볼륨에 관리
+      # 필요하다면 초기 스키마 SQL 파일 매핑
+      # - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  postgres_data:
